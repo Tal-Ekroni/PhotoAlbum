@@ -1,7 +1,22 @@
-/* .App{
-    display: flex;
-} */
+*{
+    box-sizing: border-box;
+}
+
+img{
+    height: 100%;
+    width: 100%;
+ }
 .AppHeader{
-    width: 15vh;
+    height: 10vh;
     background-color: aquamarine;
+}
+
+ .CardImg{
+    height: 350px;
+    width: 350px;
+    border: none;
+} 
+.ThumbnailImg{
+    height: 150px;
+    width: 150px;
 }

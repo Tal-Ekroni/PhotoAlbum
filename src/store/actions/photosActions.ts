@@ -1,8 +1,10 @@
 import { Dispatch } from "redux";
-import axios from "axios";
 import {
   PhotosDispatchTypes,
   LOAD_PHOTOS,
+  SET_CURR_PIC,
+  TOGGLE_MODAL,
+  PhotosData
   
 } from "./photosActionTypes";
 import { photoService } from "../../services/photoService";
@@ -14,6 +16,29 @@ export const getPhotos =
       dispatch({
         type: LOAD_PHOTOS,
         payload:res.data.splice(0,100)
+      });
+    } catch (err) {
+   
+    }
+  };
+  export const setCurrPic =
+  (data:PhotosData) => async (dispatch: Dispatch<PhotosDispatchTypes>) => {
+    try {
+      console.log('testy');
+      
+      dispatch({
+        type: SET_CURR_PIC,
+        payload:data
+      });
+    } catch (err) {
+   
+    }
+  };
+  export const toggleModal =(toggle:boolean) => async (dispatch: Dispatch) => {
+    try {
+      dispatch({
+        type: TOGGLE_MODAL,
+        payload:toggle
       });
     } catch (err) {
    
