@@ -5,17 +5,15 @@ import {
   LOAD_PHOTOS,
   
 } from "./photosActionTypes";
+import { photoService } from "../../services/photoService";
 
 export const getPhotos =
   () => async (dispatch: Dispatch<PhotosDispatchTypes>) => {
     try {
-   
-      const res = await axios.get(
-        "https://jsonplaceholder.typicode.com/photos"
-      );
+      const res = await photoService.query()
       dispatch({
         type: LOAD_PHOTOS,
-        payload:res.data
+        payload:res.data.splice(0,100)
       });
     } catch (err) {
    

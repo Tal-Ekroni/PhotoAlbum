@@ -9,7 +9,6 @@ interface Props {
 const PhotosList: React.FC<Props> = ({ photos }) => {
   return (
     <div>
-      ok
       {photos.map((photo, idx) => {
         return <PhotoPreview key={idx} photo={photo} />;
       })}

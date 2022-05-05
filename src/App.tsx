@@ -4,15 +4,21 @@ import "./assets/css/main.css";
 import PhotosList from "./cmps/PhotosList";
 import { getPhotos } from "./store/actions/photosActions";
 import { RootStore } from "./store/store";
+import { Alert } from "react-bootstrap";
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { Button } from "react-bootstrap";
 const App: React.FC = () => {
   const dispatch: any = useDispatch();
   const { photos } = useSelector((state: RootStore) => state.photosModule);
   useEffect(() => {
-    dispatch(getPhotos());
+    // dispatch(getPhotos());
   }, []);
+  if (!photos) return <div>loading...</div>;
   return (
-    <div className="App photo-app">
-     {photos&&<PhotosList photos={photos}/>}
+    <div className="d-flex justify-content-center">
+      <header className="AppHeader">Photo Album</header>
+      <PhotosList photos={photos} />
+     <Button>okok</Button>
     </div>
   );
 };
