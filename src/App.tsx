@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./assets/css/main.css";
+import PhotosList from "./cmps/PhotosList";
 import { getPhotos } from "./store/actions/photosActions";
 import { RootStore } from "./store/store";
 const App: React.FC = () => {
@@ -11,7 +12,7 @@ const App: React.FC = () => {
   }, []);
   return (
     <div className="App photo-app">
-      <header className="App-header"></header>
+     {photos&&<PhotosList photos={photos}/>}
     </div>
   );
 };

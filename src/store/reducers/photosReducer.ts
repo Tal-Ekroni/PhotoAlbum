@@ -12,7 +12,7 @@ const photosReducer = (
   action: PhotosDispatchTypes
 ): INITIAL_STATE_I => {
   switch (action.type) {
-        case "LOAD_SUCCESS":
+        case "LOAD_PHOTOS":
           return {
             ...state,
             photos: [...action.payload],

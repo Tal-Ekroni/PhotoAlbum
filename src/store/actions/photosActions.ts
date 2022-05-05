@@ -1,29 +1,24 @@
 import { Dispatch } from "redux";
 import axios from "axios";
-
 import {
   PhotosDispatchTypes,
   LOAD_PHOTOS,
-  LOAD_SUCCESS,
-  LOAD_FAIL,
+  
 } from "./photosActionTypes";
+
 export const getPhotos =
   () => async (dispatch: Dispatch<PhotosDispatchTypes>) => {
     try {
-      dispatch({
-        type: LOAD_PHOTOS,
-      });
+   
       const res = await axios.get(
         "https://jsonplaceholder.typicode.com/photos"
       );
       dispatch({
-        type: LOAD_SUCCESS,
+        type: LOAD_PHOTOS,
         payload:res.data
       });
     } catch (err) {
-      dispatch({
-        type: LOAD_FAIL,
-      });
+   
     }
   };
 // import { photoService } from "../../services/photoService";
