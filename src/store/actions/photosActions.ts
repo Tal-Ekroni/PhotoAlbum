@@ -4,46 +4,55 @@ import {
   LOAD_PHOTOS,
   SET_CURR_PIC,
   TOGGLE_MODAL,
-  PhotosData
-  
+  PhotosData,
+  UPDATE_PHOTO,
 } from "./photosActionTypes";
 import { photoService } from "../../services/photoService";
 
 export const getPhotos =
   () => async (dispatch: Dispatch<PhotosDispatchTypes>) => {
     try {
-      const res = await photoService.query()
+      const res = await photoService.query();
       dispatch({
         type: LOAD_PHOTOS,
-        payload:res.data.splice(0,100)
+        payload: res.data.splice(0, 100),
       });
-    } catch (err) {
-   
-    }
+    } catch (err) {}
   };
-  export const setCurrPic =
-  (data:PhotosData) => async (dispatch: Dispatch<PhotosDispatchTypes>) => {
+
+export const setCurrPic =
+  (data: PhotosData) => async (dispatch: Dispatch<PhotosDispatchTypes>) => {
     try {
-      console.log('testy');
-      
+      console.log("testy");
+
       dispatch({
         type: SET_CURR_PIC,
-        payload:data
+        payload: data,
       });
-    } catch (err) {
-   
-    }
+    } catch (err) {}
   };
-  export const toggleModal =(toggle:boolean) => async (dispatch: Dispatch) => {
+  
+export const toggleModal = (toggle: boolean) => async (dispatch: Dispatch) => {
+  try {
+    dispatch({
+      type: TOGGLE_MODAL,
+      payload: toggle,
+    });
+  } catch (err) {}
+};
+export const updateTitle =
+  (photo: PhotosData, title: string) => async (dispatch: Dispatch) => {
     try {
+      const editedPhoto = await photoService.updateTitle(photo, title);
       dispatch({
-        type: TOGGLE_MODAL,
-        payload:toggle
+        type: UPDATE_PHOTO,
+        payload: editedPhoto,
       });
-    } catch (err) {
-   
-    }
+    } catch (err) {}
   };
+
+// const edited = await photoService.updateTitle(photo, "yoyoyo");
+
 // import { photoService } from "../../services/photoService";
 
 // export function loadPhotos() {

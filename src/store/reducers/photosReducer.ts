@@ -3,38 +3,47 @@ interface INITIAL_STATE_I {
   loading: boolean;
   photos: PhotosData[];
   isModalOpen: boolean;
-  currPic?:PhotosData|{}
+  currPic?: PhotosData;
 }
 const INITIAL_STATE: INITIAL_STATE_I = {
   loading: false,
   photos: [],
   isModalOpen: false,
-  currPic:{}
 };
 const photosReducer = (
   state: INITIAL_STATE_I = INITIAL_STATE,
   action: PhotosDispatchTypes
 ): INITIAL_STATE_I => {
+  var newState = state;
+
   switch (action.type) {
     case "LOAD_PHOTOS":
-      return {
+      newState = {
         ...state,
         photos: [...action.payload],
       };
-      case "TOGGLE_MODAL":
-        return {
+      break;
+    case "TOGGLE_MODAL":
+      newState = {
+        ...state,
+        isModalOpen: action.payload,
+      };
+      break;
+    case "SET_CURR_PIC":
+      newState = {
+        ...state,
+        currPic: action.payload,
+      };
+      break;
+      case "UPDATE_PHOTO":
+        let newPhotos=state.photos.map(photo=>(photo.id===action.payload.id)?action.payload:photo)
+        newState = {
           ...state,
-          isModalOpen: action.payload,
+          photos:newPhotos,
         };
-        case "SET_CURR_PIC":
-          console.log(action);
-          
-          return {
-            ...state,
-            currPic: action.payload,
-          };
+        break;
   }
-  return state;
+  return newState;
 };
 
 export default photosReducer;

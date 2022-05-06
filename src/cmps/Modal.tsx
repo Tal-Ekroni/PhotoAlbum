@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootStore } from "../store/store";
 
-interface Props {
-  onToggleModal: Function;
-}
+const PhotoPreview: React.FC = () => {
+  const { currPic } = useSelector((state: RootStore) => state.photosModule);
 
-const PhotoPreview: React.FC<Props> = ({ onToggleModal }) => {
-  const [data, setData] = useState({});
-  useEffect(() => {
- 
-  }, []);
-  return <div className="m-3">yo</div>;
+  if (!currPic) return <div>loading...</div>;
+  return (
+    <div className="m-3 img-fluid">
+      <img src={currPic.url} alt="" />
+    </div>
+  );
 };
 export default PhotoPreview;

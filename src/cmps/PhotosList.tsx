@@ -8,8 +8,7 @@ interface Props {
 
 const PhotosList: React.FC<Props> = ({ photos }) => {
   return (
-    <div className="d-flex flex-wrap flex-column">
-      
+    <div className="d-flex flex-wrap flex-row">
       {photos.map((photo, idx) => {
         return <PhotoPreview key={idx} photo={photo} />;
       })}
