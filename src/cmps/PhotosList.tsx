@@ -2,7 +2,7 @@ import React from "react";
 import { PhotosData } from "../store/actions/photosActionTypes";
 import PhotoPreview from "./PhotoPreview";
 
-interface Props {
+type Props = {
   photos: PhotosData[];
 }
 

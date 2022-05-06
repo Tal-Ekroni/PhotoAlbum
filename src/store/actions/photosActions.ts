@@ -6,6 +6,8 @@ import {
   TOGGLE_MODAL,
   PhotosData,
   UPDATE_PHOTO,
+  DELETE_PHOTO,
+  ADD_PHOTO,
 } from "./photosActionTypes";
 import { photoService } from "../../services/photoService";
 
@@ -46,6 +48,27 @@ export const updateTitle =
       dispatch({
         type: UPDATE_PHOTO,
         payload: editedPhoto,
+      });
+    } catch (err) {}
+  };
+
+export const deletePhoto = (id: number) => async (dispatch: Dispatch) => {
+  try {
+    await photoService.deletePhoto(id);
+    dispatch({
+      type: DELETE_PHOTO,
+      payload: id,
+    });
+  } catch (err) {}
+};
+
+export const addPhoto =
+  (newPhoto: PhotosData) => async (dispatch: Dispatch) => {
+    try {
+      const res = await photoService.addPhoto(newPhoto);
+      dispatch({
+        type: ADD_PHOTO,
+        payload: res,
       });
     } catch (err) {}
   };

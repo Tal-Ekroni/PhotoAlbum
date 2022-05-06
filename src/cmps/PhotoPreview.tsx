@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
+  deletePhoto,
   setCurrPic,
   toggleModal,
   updateTitle,
@@ -8,7 +9,7 @@ import { PhotosData } from "../store/actions/photosActionTypes";
 import { RootStore } from "../store/store";
 import ChangeTitle from "./ChangeTitle";
 
-interface Props {
+type Props = {
   photo: PhotosData;
 }
 
@@ -23,6 +24,10 @@ const PhotoPreview: React.FC<Props> = ({ photo }) => {
   const onChangeTitle = async (title: string) => {
     dispatch(updateTitle(photo, title));
   };
+  const onDeletePhoto = async (id: number) => {
+    dispatch(deletePhoto(id))
+    
+  };
   return (
     <div className="CardContainer border border-secondary mb-5 m-3">
       <h5 className="m-3">{photo.title}</h5>
@@ -33,6 +38,7 @@ const PhotoPreview: React.FC<Props> = ({ photo }) => {
           onClick={(ev) => openFullSize(ev)}
         >
           <img src={photo.thumbnailUrl} />
+          <button onClick={() => onDeletePhoto(photo.id)}>delete</button>
         </div>
       </div>
     </div>

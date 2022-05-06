@@ -3,7 +3,10 @@ import { PhotosData } from "../store/actions/photosActionTypes";
 
 export const photoService = {
   query,
-  updateTitle
+  updateTitle,
+  deletePhoto,
+  addPhoto,
+  getRandomId
 };
 
 async function query() {
@@ -15,4 +18,19 @@ async function updateTitle(photo:PhotosData,txt: string) {
   const newPhoto= {...photo,title:txt}
   const res = await axios.put(`https://jsonplaceholder.typicode.com/photos/${photo.id}`, newPhoto)
   return res.data
+}
+async function deletePhoto(id: number) {
+  const res = await axios.delete(`https://jsonplaceholder.typicode.com/photos/${id}`)
+  return res.data
+}
+async function addPhoto(newPhoto: PhotosData) {
+
+  const res = await axios.post('https://jsonplaceholder.typicode.com/photos/',newPhoto)
+  return res.data
+}
+
+function getRandomId(min:number, max:number) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min; 
 }

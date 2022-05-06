@@ -15,7 +15,7 @@ const photosReducer = (
   action: PhotosDispatchTypes
 ): INITIAL_STATE_I => {
   var newState = state;
-
+  let newPhotos;
   switch (action.type) {
     case "LOAD_PHOTOS":
       newState = {
@@ -35,13 +35,24 @@ const photosReducer = (
         currPic: action.payload,
       };
       break;
-      case "UPDATE_PHOTO":
-        let newPhotos=state.photos.map(photo=>(photo.id===action.payload.id)?action.payload:photo)
-        newState = {
-          ...state,
-          photos:newPhotos,
-        };
-        break;
+    case "UPDATE_PHOTO":
+      newPhotos = state.photos.map((photo) =>
+        photo.id === action.payload.id ? action.payload : photo
+      );
+      newState = {
+        ...state,
+        photos: newPhotos,
+      };
+      break;
+    case "DELETE_PHOTO":
+      newPhotos = state.photos.filter((photo) => photo.id !== action.payload);
+      newState = { ...state, photos: newPhotos };
+      break;
+    case "ADD_PHOTO":
+      newState = { ...state, photos: [...state.photos, action.payload] };
+      console.log(newState);
+      
+      break;
   }
   return newState;
 };
