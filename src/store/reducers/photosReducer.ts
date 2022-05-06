@@ -49,7 +49,7 @@ const photosReducer = (
       newState = { ...state, photos: newPhotos };
       break;
     case "ADD_PHOTO":
-      newState = { ...state, photos: [...state.photos, action.payload] };
+      newState = { ...state, photos: [ action.payload,...state.photos] };
       console.log(newState);
       
       break;

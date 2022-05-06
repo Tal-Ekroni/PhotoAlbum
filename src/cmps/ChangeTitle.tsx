@@ -10,10 +10,10 @@ const ChangeTitle: React.FC<Props> = ({ onChangeTitle, txt }) => {
     setTitleTxt(value);
   };
   return (
-    <div className="m-3 img-fluid">
+    <div className="m-3 img-fluid d-flex flex-column ChangeTitle">
       <input type="text" value={titleTxt} onInput={handleInput} />
-      <button onClick={() => onChangeTitle(titleTxt)}>
-        click to change title
+      <button className="btn btn-light" onClick={() => onChangeTitle(titleTxt)}>
+        Change title
       </button>
     </div>
   );

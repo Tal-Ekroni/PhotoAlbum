@@ -1,0 +1,19 @@
+.CardContainer{
+    width: 400px;
+    height: 300px;
+}
+.PhotoTitle{
+    height: 40px;
+}
+.ChangeTitle{
+    width: 30%;
+    height: 10px;
+}
+@media (max-width: 576px) {
+    .PhotoTitle{
+
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+ }
