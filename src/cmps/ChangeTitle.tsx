@@ -1,7 +1,4 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { updateTitle } from "../store/actions/photosActions";
-import { PhotosData } from "../store/actions/photosActionTypes";
 type Props = {
   onChangeTitle: Function;
   txt: string;

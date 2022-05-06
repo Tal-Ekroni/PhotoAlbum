@@ -6,7 +6,6 @@ import {
 } from "../store/actions/photosActions";
 import { PhotosData } from "../store/actions/photosActionTypes";
 import { RootStore } from "../store/store";
-import { photoService } from "../services/photoService";
 import ChangeTitle from "./ChangeTitle";
 
 interface Props {
@@ -31,7 +30,8 @@ const PhotoPreview: React.FC<Props> = ({ photo }) => {
       <div className="m-3 d-flex flex-row border-0 card justify-content-between ">
         <div
           className=" ThumbnailImg d-flex align-self-end"
-          onClick={(ev) => openFullSize(ev)}>
+          onClick={(ev) => openFullSize(ev)}
+        >
           <img src={photo.thumbnailUrl} />
         </div>
       </div>
