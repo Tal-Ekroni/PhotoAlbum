@@ -1,7 +1,20 @@
-.PhotoModal{
-    position: fixed;
-    top: 50%;  
-    left: 50%; 
-    transform: translate(-50%, -50%);
-    text-align: center;
+.PhotoModal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.ImgContainer, .ImgContainer img {
+  object-fit: cover;
+  width: 600px;
+  height: 600px;
+}
+
+@media (max-width: 576px) {
+  .ImgContainer,
+  .ImgContainer img {
+    width: 400px;
+    height: 400px;
+  }
 }

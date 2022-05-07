@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   deletePhoto,
@@ -18,42 +18,44 @@ type Props = {
 const PhotoPreview: React.FC<Props> = ({ photo }) => {
   const dispatch: any = useDispatch();
   const { currPic } = useSelector((state: RootStore) => state.photosModule);
-  
+
   const [isEdit, setIsEdit] = useState(false);
   const [titleTxt, setTitleTxt] = useState(photo.title);
-  
+
   const handleInput = (ev: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = ev.target;
     setTitleTxt(value);
   };
-  
-  const openFullSize = (
-    ev: React.MouseEvent<HTMLButtonElement | HTMLImageElement, MouseEvent>
-  ) => {
+
+  const openFullSize = () => {
     if (currPic) return;
     dispatch(setCurrPic(photo));
   };
   const onChangeTitle = async () => {
     if (!titleTxt) return;
     dispatch(updateTitle(photo, titleTxt));
-    setIsEdit(false)
+    setIsEdit(false);
   };
   const onDeletePhoto = async (ev: React.MouseEvent, id: number) => {
     ev.stopPropagation();
     dispatch(deletePhoto(id));
   };
   return (
-    <div className="CardContainer border border-info mb-5 ">
+    <div className="CardContainer  mb-4 ">
       <div className=" ThumbnailImg d-flex align-self-end">
-        <img src={photo.thumbnailUrl} onClick={(ev) => openFullSize(ev)} />
+        <img src={photo.thumbnailUrl} onClick={openFullSize} />
       </div>
       {!isEdit && <h4 className="PhotoTitle ">{photo.title}</h4>}
-      {isEdit && <input className="TitleEdit" type="text" value={titleTxt} onInput={handleInput} />}
-      <button
-        className="btn btn-primary ViewBtn"
-        onClick={(ev) => openFullSize(ev)}
-      >
-        ViewFull Size
+      {isEdit && (
+        <input
+          className="TitleEdit"
+          type="text"
+          value={titleTxt}
+          onInput={handleInput}
+        />
+      )}
+      <button className="btn btn-primary ViewBtn" onClick={openFullSize}>
+        View Full Size
       </button>
       <div className="EditBtns">
         {isEdit && <IoMdCheckmark size={25} onClick={onChangeTitle} />}
@@ -63,10 +65,7 @@ const PhotoPreview: React.FC<Props> = ({ photo }) => {
             setIsEdit(!isEdit);
           }}
         />
-        <MdDelete
-          size={25}
-          onClick={(ev) => onDeletePhoto(ev, photo.id)}
-        />
+        <MdDelete size={25} onClick={(ev) => onDeletePhoto(ev, photo.id)} />
       </div>
     </div>
   );

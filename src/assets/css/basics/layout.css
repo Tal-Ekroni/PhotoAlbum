@@ -1,0 +1,12 @@
+.MainLayout{
+    padding: 0 70px 0 70px;
+    max-width: 1340px;
+    margin: 0 auto;
+}
+
+@media (max-width:900px) {
+    .MainLayout{
+      padding: 0 30px 0 30px;
+    }
+  }
+  

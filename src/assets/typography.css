@@ -1,0 +1,13 @@
+@font-face {
+    font-family: Montserrat sans-serif;
+    src: url(./fonts/Montserrat-ExtraBold.ttf);
+    font-weight: 600;
+  }
+  @font-face {
+    font-family: russoone sans-serif;
+    src: url(./fonts/RussoOne-Regular.ttf);
+  }
+  @font-face {
+    font-family: plexmono sans-serif;
+    src: url(./fonts/IBMPlexMono-Light.ttf);
+  }

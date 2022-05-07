@@ -4,10 +4,14 @@
   word-wrap: break-word;
   text-align: center;
   position: relative;
+  border: 1px solid lightblue;
+  border-bottom: none;
+  border-radius: 5px;
 }
 .PhotoTitle {
   padding: 0 5px 0 5px;
   font-size: 20px;
+  font-family: plexmono;
 }
 .ViewBtn {
   position: absolute;
@@ -23,8 +27,11 @@
   right: 0;
   cursor: pointer;
 }
-.ThumbnailImg{
+.ThumbnailImg {
   cursor: pointer;
+  width: 150px;
+  height: 150px;
+
 }
 .TitleEdit {
   width: 100%;
@@ -34,5 +41,11 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+  .CardContainer {
+    height: 300px;
+  }
+  .EditBtns {
+    bottom: 12%;
   }
 }

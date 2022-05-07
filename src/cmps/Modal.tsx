@@ -13,9 +13,9 @@ const Modal: React.FC = () => {
 
   if (!currPic) return <div>loading...</div>;
   return (
-    <div className="PhotoModal m-3 bg-light d-flex flex-column ">
+    <div className="PhotoModal m-3 bg-light d-flex flex-column  ">
       <h3 className="m-3">{currPic.title}</h3>
-      <div className="img-fluid  ">
+      <div className="ImgContainer mx-auto  ">
         <img src={currPic.url} alt="" />
       </div>
       <button type="button" className="btn btn-light" onClick={onCloseModal}>

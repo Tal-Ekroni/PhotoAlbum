@@ -1,0 +1,10 @@
+.PhotoList{
+    gap:10px;
+}
+
+@media (max-width: 576px) {
+    .PhotoList {
+   gap: 0px;
+    }
+  }
+  

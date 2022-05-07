@@ -23,9 +23,9 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <header className="AppHeader h3 d-flex justify-content-center align-items-center">
-        Photo Album
+        Lynx.MDbum
       </header>
-      <AddPhoto />
+      <AddPhoto  />
       <PhotosList photos={photos} />
       {currPic && <Modal />}
     </div>

@@ -8,9 +8,9 @@ type Props = {
 
 const PhotosList: React.FC<Props> = ({ photos }) => {
   return (
-    <div className="d-flex flex-wrap flex-row justify-content-between">
-      {photos.map((photo, idx) => {
-        return <PhotoPreview key={idx} photo={photo} />;
+    <div className="MainLayout PhotoList d-flex flex-wrap flex-row justify-content-between">
+      {photos.map(photo => {
+        return <PhotoPreview key={photo.url} photo={photo} />;
       })}
     </div>
   );

@@ -1,4 +1,8 @@
-@import "pages/photo-app.css";
+@import "../typography.css";
+@import "basics/layout.css";
 
+@import "pages/photo-app.css";
 @import "cmps/modal.css";
+@import "cmps/photo-list.css";
 @import "cmps/photo-preview.css";
+@import "cmps/add-photo.css";
