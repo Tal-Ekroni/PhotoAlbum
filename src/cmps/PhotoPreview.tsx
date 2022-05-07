@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   deletePhoto,
   setCurrPic,
-  toggleModal,
   updateTitle,
 } from "../store/actions/photosActions";
 import { PhotosData } from "../store/actions/photosActionTypes";
 import { RootStore } from "../store/store";
-import ChangeTitle from "./ChangeTitle";
+import { MdDelete } from "react-icons/md";
+import { FiEdit2 } from "react-icons/fi";
+import { IoMdCheckmark } from "react-icons/io";
 
 type Props = {
   photo: PhotosData;
@@ -16,33 +17,56 @@ type Props = {
 
 const PhotoPreview: React.FC<Props> = ({ photo }) => {
   const dispatch: any = useDispatch();
-  const { isModalOpen } = useSelector((state: RootStore) => state.photosModule);
-
-  const openFullSize = (ev: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    if (isModalOpen) return
+  const { currPic } = useSelector((state: RootStore) => state.photosModule);
+  
+  const [isEdit, setIsEdit] = useState(false);
+  const [titleTxt, setTitleTxt] = useState(photo.title);
+  
+  const handleInput = (ev: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = ev.target;
+    setTitleTxt(value);
+  };
+  
+  const openFullSize = (
+    ev: React.MouseEvent<HTMLButtonElement | HTMLImageElement, MouseEvent>
+  ) => {
+    if (currPic) return;
     dispatch(setCurrPic(photo));
-    dispatch(toggleModal(!isModalOpen));
   };
-  const onChangeTitle = async (title: string) => {
-    if (!title)return
-    dispatch(updateTitle(photo, title));
+  const onChangeTitle = async () => {
+    if (!titleTxt) return;
+    dispatch(updateTitle(photo, titleTxt));
+    setIsEdit(false)
   };
-  const onDeletePhoto = async (ev:React.MouseEvent,id: number) => {
-    ev.stopPropagation()
+  const onDeletePhoto = async (ev: React.MouseEvent, id: number) => {
+    ev.stopPropagation();
     dispatch(deletePhoto(id));
   };
   return (
     <div className="CardContainer border border-info mb-5 ">
-      <h5 className="PhotoTitle ">{photo.title}</h5>
-      <ChangeTitle onChangeTitle={onChangeTitle} txt={photo.title} />
-        <button className=" btn btn-light" onClick={(ev) => onDeletePhoto(ev,photo.id)}>delete</button>
-      <div className=" d-flex flex-row border-0 card justify-content-between ">
-        <div
-          className=" ThumbnailImg d-flex align-self-end"
-          onClick={(ev) => openFullSize(ev)}
-        >
-          <img src={photo.thumbnailUrl} />
-        </div>
+      <div className=" ThumbnailImg d-flex align-self-end">
+        <img src={photo.thumbnailUrl} onClick={(ev) => openFullSize(ev)} />
+      </div>
+      {!isEdit && <h4 className="PhotoTitle ">{photo.title}</h4>}
+      {isEdit && <input className="TitleEdit" type="text" value={titleTxt} onInput={handleInput} />}
+      <button
+        className="btn btn-primary ViewBtn"
+        onClick={(ev) => openFullSize(ev)}
+      >
+        ViewFull Size
+      </button>
+      <div className="EditBtns">
+        {isEdit && <IoMdCheckmark size={25} onClick={onChangeTitle} />}
+        <FiEdit2
+          size={20}
+          onClick={() => {
+            setIsEdit(!isEdit);
+          }}
+        />
+        <MdDelete
+          size={25}
+          onClick={(ev) => onDeletePhoto(ev, photo.id)}
+        />
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./assets/css/main.css";
 import PhotosList from "./cmps/PhotosList";
-import { getPhotos, toggleModal } from "./store/actions/photosActions";
+import { getPhotos } from "./store/actions/photosActions";
 import { RootStore } from "./store/store";
 import Modal from "./cmps/Modal";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -11,7 +11,7 @@ import AddPhoto from "./cmps/AddPhoto";
 const App: React.FC = () => {
   
   const dispatch: any = useDispatch();
-  const { photos, isModalOpen } = useSelector(
+  const { photos, currPic } = useSelector(
     (state: RootStore) => state.photosModule
   );
 
@@ -27,7 +27,7 @@ const App: React.FC = () => {
       </header>
       <AddPhoto />
       <PhotosList photos={photos} />
-      {isModalOpen && <Modal />}
+      {currPic && <Modal />}
     </div>
   );
 };

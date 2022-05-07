@@ -1,5 +1,4 @@
 export const LOAD_PHOTOS = "LOAD_PHOTOS";
-export const TOGGLE_MODAL = "TOGGLE_MODAL";
 export const SET_CURR_PIC = "SET_CURR_PIC";
 export const UPDATE_PHOTO = "UPDATE_PHOTO";
 export const DELETE_PHOTO = "DELETE_PHOTO";
@@ -17,10 +16,7 @@ export type LoadPhotos = {
   type: typeof LOAD_PHOTOS;
   payload: PhotosData[];
 };
-export type ToggleModal = {
-  type: typeof TOGGLE_MODAL;
-  payload: boolean;
-};
+
 export type UpdatePhoto = {
   type: typeof UPDATE_PHOTO;
   payload: PhotosData;
@@ -35,12 +31,11 @@ export type DeletePhoto = {
 };
 export type SetCurrPic = {
   type: typeof SET_CURR_PIC;
-  payload: PhotosData;
+  payload: PhotosData|null;
 };
 
 export type PhotosDispatchTypes =
   | LoadPhotos
-  | ToggleModal
   | SetCurrPic
   | UpdatePhoto
   | DeletePhoto

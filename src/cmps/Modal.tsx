@@ -1,14 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
-import { toggleModal } from "../store/actions/photosActions";
+import { setCurrPic } from "../store/actions/photosActions";
 import { RootStore } from "../store/store";
 
 const Modal: React.FC = () => {
   const dispatch: any = useDispatch();
-  const { currPic, isModalOpen } = useSelector(
+  const { currPic } = useSelector(
     (state: RootStore) => state.photosModule
   );
   const onCloseModal = () => {
-    dispatch(toggleModal(!isModalOpen));
+    dispatch(setCurrPic(null));
   };
 
   if (!currPic) return <div>loading...</div>;

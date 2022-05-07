@@ -3,7 +3,6 @@ import {
   PhotosDispatchTypes,
   LOAD_PHOTOS,
   SET_CURR_PIC,
-  TOGGLE_MODAL,
   PhotosData,
   UPDATE_PHOTO,
   DELETE_PHOTO,
@@ -23,7 +22,7 @@ export const getPhotos =
   };
 
 export const setCurrPic =
-  (data: PhotosData) => async (dispatch: Dispatch<PhotosDispatchTypes>) => {
+  (data: PhotosData|null) => async (dispatch: Dispatch<PhotosDispatchTypes>) => {
     try {
       dispatch({
         type: SET_CURR_PIC,
@@ -32,14 +31,6 @@ export const setCurrPic =
     } catch (err) {}
   };
 
-export const toggleModal = (toggle: boolean) => async (dispatch: Dispatch) => {
-  try {
-    dispatch({
-      type: TOGGLE_MODAL,
-      payload: toggle,
-    });
-  } catch (err) {}
-};
 
 export const updateTitle =
   (photo: PhotosData, title: string) => async (dispatch: Dispatch) => {

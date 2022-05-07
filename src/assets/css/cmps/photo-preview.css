@@ -1,19 +1,38 @@
-.CardContainer{
-    width: 400px;
-    height: 300px;
+.CardContainer {
+  height: 400px;
+  max-width: 150px;
+  word-wrap: break-word;
+  text-align: center;
+  position: relative;
 }
-.PhotoTitle{
-    height: 40px;
+.PhotoTitle {
+  padding: 0 5px 0 5px;
+  font-size: 20px;
 }
-.ChangeTitle{
-    width: 30%;
-    height: 10px;
+.ViewBtn {
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+  transform: translate(50%);
+  width: 100%;
+}
+
+.EditBtns {
+  position: absolute;
+  bottom: 10%;
+  right: 0;
+  cursor: pointer;
+}
+.ThumbnailImg{
+  cursor: pointer;
+}
+.TitleEdit {
+  width: 100%;
 }
 @media (max-width: 576px) {
-    .PhotoTitle{
-
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
- }
+  .PhotoTitle {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

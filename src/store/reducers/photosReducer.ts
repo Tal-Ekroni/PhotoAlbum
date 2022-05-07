@@ -1,14 +1,11 @@
 import { PhotosDispatchTypes, PhotosData } from "../actions/photosActionTypes";
 interface INITIAL_STATE_I {
-  loading: boolean;
   photos: PhotosData[];
-  isModalOpen: boolean;
-  currPic?: PhotosData;
+  currPic: PhotosData|null;
 }
 const INITIAL_STATE: INITIAL_STATE_I = {
-  loading: false,
   photos: [],
-  isModalOpen: false,
+  currPic:null
 };
 const photosReducer = (
   state: INITIAL_STATE_I = INITIAL_STATE,
@@ -21,12 +18,6 @@ const photosReducer = (
       newState = {
         ...state,
         photos: [...action.payload],
-      };
-      break;
-    case "TOGGLE_MODAL":
-      newState = {
-        ...state,
-        isModalOpen: action.payload,
       };
       break;
     case "SET_CURR_PIC":

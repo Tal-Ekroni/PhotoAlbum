@@ -1,11 +1,14 @@
-import React, { Dispatch, FormEvent, useId, useState } from "react";
+import React, {  useState } from "react";
 import { useDispatch } from "react-redux";
 import { photoService } from "../services/photoService";
 import { addPhoto } from "../store/actions/photosActions";
 
 const AddPhoto: React.FC = () => {
-  const [isAddOn, setIsAddOn] = useState(false);
   const dispatch:any = useDispatch();
+  
+  const [isAddOn, setIsAddOn] = useState(false);
+
+  
   const uploadPhoto = (ev: React.SyntheticEvent): void => {
     ev.preventDefault();
     let target = ev.target as typeof ev.target & {
