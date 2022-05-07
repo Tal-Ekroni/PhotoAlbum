@@ -19,6 +19,11 @@ const App: React.FC = () => {
     dispatch(getPhotos());
   }, []);
 
+  const handleScroll=(ev:any)=>{
+    console.log(ev.currentTarget);
+    
+  }
+
   if (!photos) return <div>loading...</div>;
   return (
     <div className="App">
@@ -26,8 +31,9 @@ const App: React.FC = () => {
         Lynx.MDbum
       </header>
       <AddPhoto  />
-      <PhotosList photos={photos} />
+      <PhotosList photos={photos} handleScroll={handleScroll} />
       {currPic && <Modal />}
+      
     </div>
   );
 };
