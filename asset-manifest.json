@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.5c60e11a.css",
-    "main.js": "/static/js/main.8c87396a.js",
-    "static/media/Montserrat-ExtraBold.ttf": "/static/media/Montserrat-ExtraBold.5daafc620ecc802516f9.ttf",
-    "static/media/IBMPlexMono-Light.ttf": "/static/media/IBMPlexMono-Light.4e589619e91de55f9a7c.ttf",
-    "static/media/RussoOne-Regular.ttf": "/static/media/RussoOne-Regular.b2f5b287ccb8fd446eae.ttf",
-    "index.html": "/index.html",
-    "main.5c60e11a.css.map": "/static/css/main.5c60e11a.css.map",
-    "main.8c87396a.js.map": "/static/js/main.8c87396a.js.map"
+    "main.css": "/PhotoAlbum/static/css/main.e30967fd.css",
+    "main.js": "/PhotoAlbum/static/js/main.8c87396a.js",
+    "static/media/Montserrat-ExtraBold.ttf": "/PhotoAlbum/static/media/Montserrat-ExtraBold.5daafc620ecc802516f9.ttf",
+    "static/media/IBMPlexMono-Light.ttf": "/PhotoAlbum/static/media/IBMPlexMono-Light.4e589619e91de55f9a7c.ttf",
+    "static/media/RussoOne-Regular.ttf": "/PhotoAlbum/static/media/RussoOne-Regular.b2f5b287ccb8fd446eae.ttf",
+    "index.html": "/PhotoAlbum/index.html",
+    "main.e30967fd.css.map": "/PhotoAlbum/static/css/main.e30967fd.css.map",
+    "main.8c87396a.js.map": "/PhotoAlbum/static/js/main.8c87396a.js.map"
   },
   "entrypoints": [
-    "static/css/main.5c60e11a.css",
+    "static/css/main.e30967fd.css",
     "static/js/main.8c87396a.js"
   ]
 }
